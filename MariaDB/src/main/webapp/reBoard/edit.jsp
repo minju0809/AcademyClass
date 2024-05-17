@@ -31,12 +31,11 @@ List<ReExamVO> li = (List<ReExamVO>)request.getAttribute("li");
 			  url : path + "/ReBoardController",
 			  data : dataStr,
 			  success: function (data){
-			  // alert("return: " + data);
-			  // alert("저장성공!!" + $('#sno').val() );
-			  if(data == "T") {
-				  location.replace(path+"/ReBoardController?sw=E&sno="+$('#sno').val()) ;
-			  }
-			  // location.replace(path+"/ReBoardController?sno="+$('#sno').val()) ;
+			  	// alert("return: " + data);
+			 		// alert("저장성공!!" + $('#sno').val() );
+				  if(data == "T") {
+					  location.replace(path+"/ReBoardController?sw=E&sno="+$('#sno').val()) ;
+				  }
 			  }
 		  })
 	  } )
@@ -45,16 +44,6 @@ List<ReExamVO> li = (List<ReExamVO>)request.getAttribute("li");
   function delK(idx, sno){
 	  alert("idx: " +  idx + ", sno : " + sno);
 	  location.href(path+"/ReBoardController?sw=D&sno="+sno+"&idx="+idx);
-	  
-	  /* $.ajax({
-		  type: "GET",
-		  url : path + "/ReBoardController",
-		  data : dataStr,
-		  success: function (data){
-			  // alert("return: " + data);
-				//location.replace(path+"/studentEdit.do?sno="+k2) ;
-		  }
-	  }) */
   }
 </script>
 

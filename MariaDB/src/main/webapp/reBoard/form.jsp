@@ -5,7 +5,6 @@
 <script  src="http://code.jquery.com/jquery-1.10.2.js" ></script>
 <script>
   var  path='${pageContext.request.contextPath}';
-  // alert("경로확인:" +path);
   jQuery.ajaxSetup({cache:false}); // 캐시 메모리 초기화
   
   $(document).ready( function(){
@@ -23,13 +22,10 @@
 			  data : dataStr,
 			  success: function (data){
 			  // alert("return: " + data);
-			  // alert("저장성공!!" + $('#sno').val() );
 				  if(data == "T") {
 					// 중복값이 있는 경우
 					  alert("사용 불가능한 ID 입니다");
 					  f1.sno.value = "";
-					  // $('#sno').val("");
-					  // location.replace(path+"/ReBoardController?sw=E&sno="+$('#sno').val()) ;
 				  } else {
 					  // 중복값이 없는 경우
 					  alert("사용 가능한 ID 입니다");
