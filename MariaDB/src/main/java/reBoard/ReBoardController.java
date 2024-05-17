@@ -40,6 +40,41 @@ public class ReBoardController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/reBoard/list.jsp");
 			rd.forward(request, response);
+		} else if(sw.equals("F")) {
+			
+			response.sendRedirect(path + "/reBoard/form.jsp");
+		} else if(sw.equals("ckID")) {
+			String sno = request.getParameter("sno");
+			String str = service.ckID(sno);
+			System.out.println("str: " + str);
+			
+			PrintWriter out = response.getWriter();
+			out.print(str);
+
+			System.out.println("ckID 확인, sno: " + sno);
+			
+		} else if(sw.equals("I")) {
+			String sno = request.getParameter("sno");
+			String sname = request.getParameter("sname");
+			int kor = Integer.parseInt(request.getParameter("kor"));
+			int eng = Integer.parseInt(request.getParameter("eng"));
+			int math = Integer.parseInt(request.getParameter("math"));
+			int hist = Integer.parseInt(request.getParameter("hist"));
+			String etc = request.getParameter("etc");
+			
+			ExamVO vo = new ExamVO();
+			vo.setSno(sno);
+			vo.setSname(sname);
+			vo.setKor(kor);
+			vo.setEng(eng);
+			vo.setMath(math);
+			vo.setHist(hist);
+			vo.setEtc(etc);
+			
+			service.insert(vo);
+			
+			response.sendRedirect(path+"/ReBoardController?sw=S");
+			
 		} else if(sw.equals("E")) {
 			String sno = request.getParameter("sno");
 			request.setAttribute("m", service.getSelectOne(sno));
@@ -63,6 +98,14 @@ public class ReBoardController extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			out.print("T");
+		} else if(sw.equals("D")) {
+			int idx = Integer.parseInt(request.getParameter("idx"));
+			String sno = request.getParameter("sno");
+			System.out.println("==> D idx: " + idx);
+			
+			service.reExamDelete(idx);
+			
+			response.sendRedirect(path+"/ReBoardController?sw=E&sno="+sno);
 		} 
 	}
 

@@ -62,7 +62,48 @@ public class ExamDaoImpl implements ExamDao {
 		}
 		return m;
 	}
+	
+	@Override
+	public String ckID(String sno) {
+		conn = DBConn.getConnection();
+		String str ="";
+		try {
+			String sql = "select * from examtbl where sno=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				str = "T";
+			} else {
+				str = "F";
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return str;
+	}
 
+
+	@Override
+	public void insert(ExamVO vo) {
+		conn = DBConn.getConnection();
+		try {
+			String sql = "insert into examtbl (sno, sname, kor, eng, math, hist, etc) "
+					+ " values (?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSno());
+			pstmt.setString(2, vo.getSname());
+			pstmt.setInt(3, vo.getKor());
+			pstmt.setInt(4, vo.getEng());
+			pstmt.setInt(5, vo.getMath());
+			pstmt.setInt(6, vo.getHist());
+			pstmt.setString(7, vo.getEtc());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public List<ReExamVO> getReExamSelect(String sno) {
 		List<ReExamVO> li = new ArrayList<>();
@@ -100,6 +141,19 @@ public class ExamDaoImpl implements ExamDao {
 			pstmt.setString(2, vo.getName());
 			pstmt.setString(3, vo.getTitle());
 			pstmt.setString(4, vo.getDetails());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void reExamDelete(int idx) {
+		conn = DBConn.getConnection();
+		try {
+			String sql = "delete from reexamtbl where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

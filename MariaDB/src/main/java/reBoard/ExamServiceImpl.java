@@ -30,4 +30,19 @@ public class ExamServiceImpl implements ExamService {
 		dao.reExamInsert(vo);
 	}
 
+	@Override
+	public void reExamDelete(int idx) {
+		dao.reExamDelete(idx);
+	}
+
+	@Override
+	public String ckID(String sno) {
+		return dao.ckID(sno);
+	}
+
+	@Override
+	public void insert(ExamVO vo) {
+		dao.insert(vo);
+	}
+
 }

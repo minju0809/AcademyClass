@@ -12,7 +12,7 @@ List<ReExamVO> li = (List<ReExamVO>)request.getAttribute("li");
 <script>
   var  path='${pageContext.request.contextPath}';
   // alert("경로확인:" +path);
-  jQuery.ajaxSetup({cache:false});
+  jQuery.ajaxSetup({cache:false}); // 캐시 메모리 초기화
   
   $(document).ready( function(){
 	  $('#saveK').click( function(){
@@ -42,11 +42,11 @@ List<ReExamVO> li = (List<ReExamVO>)request.getAttribute("li");
 	  } )
   })
   
-  function delK(k1, k2){
-	  // alert(k1 + " : " +  k2);
-	  var  dataStr={ idx : k1 };
+  function delK(idx, sno){
+	  alert("idx: " +  idx + ", sno : " + sno);
+	  location.href(path+"/ReBoardController?sw=D&sno="+sno+"&idx="+idx);
 	  
-	  $.ajax({
+	  /* $.ajax({
 		  type: "GET",
 		  url : path + "/ReBoardController",
 		  data : dataStr,
@@ -54,7 +54,7 @@ List<ReExamVO> li = (List<ReExamVO>)request.getAttribute("li");
 			  // alert("return: " + data);
 				//location.replace(path+"/studentEdit.do?sno="+k2) ;
 		  }
-	  })
+	  }) */
   }
 </script>
 
@@ -142,7 +142,7 @@ List<ReExamVO> li = (List<ReExamVO>)request.getAttribute("li");
 					<td><%=vo.getTitle() %></td>
 					<td><%=vo.getDetails() %></td>
 					<td><%=vo.getToday() %></td>
-					<td><a>삭제</a></td>
+					<td><input type=button onclick="delK('<%=vo.getIdx()%>', '<%=vo.getSno()%>')" value="삭제"></td>
 			  </tr>
 			  <%
 					}

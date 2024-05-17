@@ -7,7 +7,14 @@ public interface ExamService {
 	
 	ExamVO getSelectOne(String sno);
 	
+	String ckID(String sno);
+	
+	void insert(ExamVO vo);
+	
+	
 	List<ReExamVO> getReExamSelect(String sno);
 	
 	void reExamInsert(ReExamVO vo);
+	
+	void reExamDelete(int idx);
 }
