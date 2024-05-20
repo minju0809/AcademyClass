@@ -29,4 +29,14 @@
     <servlet-name>ReBoardController</servlet-name>
     <url-pattern>/ReBoardController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReplyBoardController</display-name>
+    <servlet-name>ReplyBoardController</servlet-name>
+    <servlet-class>replyBoard.ReplyBoardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReplyBoardController</servlet-name>
+    <url-pattern>/ReplyBoardController</url-pattern>
+  </servlet-mapping>
 </web-app>

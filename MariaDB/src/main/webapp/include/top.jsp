@@ -52,5 +52,8 @@
 	
 	<a href="<%=path %>/ReBoardController?sw=F">성적등록</a>
 	<a href="<%=path %>/ReBoardController?sw=S">학생목록</a>
+	
+	<a href="<%=path %>/ReplyBoardController?sw=F">등록</a>
+	<a href="<%=path %>/ReplyBoardController?sw=S">목록</a>
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>
