@@ -55,5 +55,8 @@
 	
 	<a href="<%=path %>/ReplyBoardController?sw=F">등록</a>
 	<a href="<%=path %>/ReplyBoardController?sw=S">목록</a>
+	
+	<a href="<%=path %>/RepsdController?sw=F">자료등록</a>
+	<a href="<%=path %>/RepsdController?sw=S">자료목록</a>
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>

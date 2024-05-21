@@ -39,4 +39,24 @@
     <servlet-name>ReplyBoardController</servlet-name>
     <url-pattern>/ReplyBoardController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RepsdController</display-name>
+    <servlet-name>RepsdController</servlet-name>
+    <servlet-class>repsd.RepsdController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RepsdController</servlet-name>
+    <url-pattern>/RepsdController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RepsdIUController</display-name>
+    <servlet-name>RepsdIUController</servlet-name>
+    <servlet-class>repsd.RepsdIUController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RepsdIUController</servlet-name>
+    <url-pattern>/RepsdIUController</url-pattern>
+  </servlet-mapping>
 </web-app>
