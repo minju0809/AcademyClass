@@ -45,4 +45,14 @@ public class RepsdServiceImpl implements RepsdService {
 		dao.delete(idx);
 	}
 
+	@Override
+	public void update(RepsdVO vo) {
+		dao.update(vo);
+	}
+
+	@Override
+	public void updateFile(RepsdVO vo) {
+		dao.updateFile(vo);
+	}
+
 }

@@ -184,4 +184,43 @@ public class RepsdDaoImpl implements RepsdDao {
 		}
 	}
 
+	@Override
+	public void update(RepsdVO vo) {
+		try {
+			conn = DBConn.getConnection();
+			String sql = "update repsd set sname=?, title=?, etc=?"
+					+ " where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSname());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getEtc());
+			pstmt.setInt(4, vo.getIdx());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConn.close(pstmt, conn);
+		}
+	}
+
+	@Override
+	public void updateFile(RepsdVO vo) {
+		try {
+			conn = DBConn.getConnection();
+			String sql = "update repsd set sname=?, title=?, etc=?, img=?"
+					+ " where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSname());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getEtc());
+			pstmt.setString(4, vo.getImg());
+			pstmt.setInt(5, vo.getIdx());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConn.close(pstmt, conn);
+		}
+	}
+
 }

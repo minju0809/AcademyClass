@@ -14,4 +14,7 @@ public interface RepsdService {
 	int cnt(int idx);
 	
 	void delete(int idx);
+	
+	void update(RepsdVO vo);
+	void updateFile(RepsdVO vo);
 }

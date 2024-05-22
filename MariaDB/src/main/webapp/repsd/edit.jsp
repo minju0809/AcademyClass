@@ -47,7 +47,7 @@ RepsdVO m = (RepsdVO)request.getAttribute("m");
 	<br>
 	<div align=center>
 		<h3>상세보기</h3>
-		<form name=f1 action="<%=path %>/RepsdIUController"
+		<form name=f1 action="<%=path %>/RepsdController"
 		method="post" enctype="multipart/form-data">
 			<input type=hidden name=sw value=U>
 			<input type=hidden name=idx value=<%=m.getIdx() %>>
@@ -62,7 +62,7 @@ RepsdVO m = (RepsdVO)request.getAttribute("m");
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type=text name=name value=<%=m.getSname() %>></td>
+					<td><input type=text name=sname value=<%=m.getSname() %>></td>
 				</tr>
 				<tr>
 					<td>제목</td>

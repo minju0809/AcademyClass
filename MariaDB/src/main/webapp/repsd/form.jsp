@@ -6,9 +6,9 @@
 	<br>
 	<div align=center>
 		<h2>파일 추가 답변형 게시판 새글 작성</h2>
-		<form action="<%=path %>/RepsdIUController"
+		<form action="<%=path %>/RepsdController"
 		method="post" enctype="multipart/form-data">
-			<input type=hidden name=sw value=I>
+			<input type=hidden name=sw value="I">
 			<table border=1>
 				<tr>
 					<td>이름</td>

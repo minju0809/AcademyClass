@@ -25,7 +25,7 @@ List<RepsdVO> li = (List<RepsdVO>)request.getAttribute("li");
 				<td>이미지</td>
 				<td>이름</td>
 				<td>제목</td>
-				<!-- <td>이미지이름</td> -->
+				<td>이미지이름</td>
 				<!-- <td>기타</td> -->
 				<td>ref</td>
 				<td>step</td>
@@ -47,7 +47,7 @@ List<RepsdVO> li = (List<RepsdVO>)request.getAttribute("li");
 						<td><%=m.getIdx() %></td>
 						<td><img class=img src="<%=path %>/repsd/files/<%=m.getImg() %>" width=50></td>
 						<td><a href="<%=path %>/RepsdController?sw=E&idx=<%=m.getIdx() %>"><%=m.getSname() %></a></td>
-						<td width=300>
+						<td width=100>
 							<%
 							if(m.getRe_level() == 2) {
 							%>
@@ -69,7 +69,7 @@ List<RepsdVO> li = (List<RepsdVO>)request.getAttribute("li");
 							%>
 						<%=m.getTitle() %>
 					</td>
-						<%-- <td><%=m.getImg() %></td> --%>
+						<td><%=m.getImg() %></td>
 						<%-- <td><%=m.getEtc() %></td> --%>
 						<td><%=m.getRef() %></td>
 						<td><%=m.getRe_step() %></td>

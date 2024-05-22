@@ -47,7 +47,7 @@ RepsdVO m = (RepsdVO)request.getAttribute("m");
 	<br>
 	<div align=center>
 		<h3>답글 작성하기</h3>
-		<form name=f1 action="<%=path %>/RepsdIUController"
+		<form name=f1 action="<%=path %>/RepsdController"
 		method="post" enctype="multipart/form-data">
 			<input type=hidden name=sw value=RE>
 			<input type=hidden name=idx value=<%=m.getIdx() %>>
