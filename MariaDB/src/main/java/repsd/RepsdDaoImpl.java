@@ -45,9 +45,20 @@ public class RepsdDaoImpl implements RepsdDao {
 	public List<RepsdVO> getSelect(RepsdVO vo) {
 		List<RepsdVO> li = new ArrayList<>();
 		conn = DBConn.getConnection();
-		String sql = "select * from repsd order by ref desc, re_step";
 		try {
-			pstmt = conn.prepareStatement(sql);
+			String sql;
+			if (vo.getCh1() == null || vo.getCh2().equals("")) {
+				sql = "select * from repsd order by ref desc, re_step limit ?, ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, vo.getStart());
+				pstmt.setInt(2, vo.getPageSize());
+			} else {
+				sql = "select * from repsd where sname like ? order by ref desc, re_step limit ?, ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%" + vo.getCh2() + "%");
+				pstmt.setInt(2, vo.getStart());
+				pstmt.setInt(3, vo.getPageSize());
+			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				RepsdVO m = new RepsdVO();
@@ -221,6 +232,32 @@ public class RepsdDaoImpl implements RepsdDao {
 		} finally {
 			DBConn.close(pstmt, conn);
 		}
+	}
+
+	@Override
+	public int totalCount(RepsdVO vo) {
+		int tc = 0;
+		conn = DBConn.getConnection();
+		String sql;
+		try {
+			if(vo.getCh1() == null || vo.getCh2().equals("")) {
+				sql = "select count(*) as tc from repsd";
+				pstmt = conn.prepareStatement(sql);
+			} else {
+				sql = "select count(*) as tc from repsd where sname like ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%" + vo.getCh2() + "%");
+			}
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				tc = rs.getInt("tc");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConn.close(rs, pstmt, conn);
+		}
+		return tc;
 	}
 
 }

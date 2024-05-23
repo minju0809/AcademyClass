@@ -58,5 +58,6 @@
 	
 	<a href="<%=path %>/RepsdController?sw=F">자료등록</a>
 	<a href="<%=path %>/RepsdController?sw=S">자료목록</a>
+	<%-- <a href="<%=path %>/RepsdController?sw=II">자료추가</a> --%>
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>

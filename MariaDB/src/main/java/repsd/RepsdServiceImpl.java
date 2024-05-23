@@ -55,4 +55,9 @@ public class RepsdServiceImpl implements RepsdService {
 		dao.updateFile(vo);
 	}
 
+	@Override
+	public int totalCount(RepsdVO vo) {
+		return dao.totalCount(vo);
+	}
+
 }

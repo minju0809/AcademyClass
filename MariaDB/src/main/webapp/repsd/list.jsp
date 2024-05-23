@@ -6,19 +6,27 @@
 <%@ include file="/include/top.jsp" %>
 <%
 List<RepsdVO> li = (List<RepsdVO>)request.getAttribute("li");
+int tc = (int)request.getAttribute("tc");
+int start = (int)request.getAttribute("start");
+int pageSize = (int)request.getAttribute("pageSize");
+
+String ch1 = (String)request.getAttribute("ch1");
+String ch2 = (String)request.getAttribute("ch2");
+System.out.println("ch1: " + ch1 + "ch2: " + ch2);
 %>
 <style>
 	.img {
     display: block;
     margin: auto;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
   }
 </style>
 <section>
 	<br>
 	<div align=center>
 		<h2>목록보기</h2>
+		tc: <%=tc %>
 		<table border=1>
 			<tr>
 				<td>번호</td>
@@ -82,6 +90,27 @@ List<RepsdVO> li = (List<RepsdVO>)request.getAttribute("li");
 			}
 			%>
 		</table>
+		<form action=RepsdController>
+			<input type=hidden name=sw value="S">
+			<select name=ch1>
+				<option value="sname">이름</option>
+			</select>
+			<input type=text name=ch2 >
+			<input type=submit value=검색 >
+		</form>
+		<a href="<%=path %>/RepsdController?sw=S&start=0&ch1=<%=ch1 %>&ch2=<%=ch2 %>">처음으로</a>
+		<%
+		if(start <= 0) { 
+		%>
+			<a>이전</a>		
+		<%
+		} else {
+		%>
+			<a href="<%=path %>/RepsdController?sw=S&start=<%=start - pageSize%>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">이전</a>
+		<%
+		}
+		%>
+			<a href="<%=path %>/RepsdController?sw=S&start=<%=start + pageSize%>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">다음</a>
 	</div>
 	<br>
 </section>

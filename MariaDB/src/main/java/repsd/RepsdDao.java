@@ -17,4 +17,6 @@ public interface RepsdDao {
 	
 	void update(RepsdVO vo);
 	void updateFile(RepsdVO vo);
+	
+	int totalCount(RepsdVO vo);
 }
