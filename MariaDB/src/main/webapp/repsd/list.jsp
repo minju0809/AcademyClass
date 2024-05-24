@@ -9,6 +9,8 @@ List<RepsdVO> li = (List<RepsdVO>)request.getAttribute("li");
 int tc = (int)request.getAttribute("tc");
 int start = (int)request.getAttribute("start");
 int pageSize = (int)request.getAttribute("pageSize");
+int nowPage = (int)request.getAttribute("nowPage");
+int totalPage = (int)request.getAttribute("totalPage");
 
 String ch1 = (String)request.getAttribute("ch1");
 String ch2 = (String)request.getAttribute("ch2");
@@ -27,6 +29,8 @@ System.out.println("ch1: " + ch1 + "ch2: " + ch2);
 	<div align=center>
 		<h2>목록보기</h2>
 		tc: <%=tc %>
+		now: <%=nowPage %>
+		totalPage: <%=totalPage %>
 		<table border=1>
 			<tr>
 				<td>번호</td>
@@ -98,19 +102,40 @@ System.out.println("ch1: " + ch1 + "ch2: " + ch2);
 			<input type=text name=ch2 >
 			<input type=submit value=검색 >
 		</form>
-		<a href="<%=path %>/RepsdController?sw=S&start=0&ch1=<%=ch1 %>&ch2=<%=ch2 %>">처음으로</a>
+		
 		<%
-		if(start <= 0) { 
+		if(ch2 != null) {
+			ch2 = java.net.URLEncoder.encode(ch2, "UTF-8");
+		}
 		%>
-			<a>이전</a>		
+		<a href="<%=path %>/RepsdController?sw=S&start=0&nowPage=1&ch1=<%=ch1 %>&ch2=<%=ch2 %>">처음</a>
+		<%
+		if(start == 0) { 
+		%>
+			이전	
 		<%
 		} else {
 		%>
-			<a href="<%=path %>/RepsdController?sw=S&start=<%=start - pageSize%>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">이전</a>
+			<a href="<%=path %>/RepsdController?sw=S&start=<%=start - pageSize%>&nowPage=<%=nowPage-1 %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">이전</a>
 		<%
 		}
 		%>
-			<a href="<%=path %>/RepsdController?sw=S&start=<%=start + pageSize%>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">다음</a>
+		<%
+		if(nowPage != totalPage) { 
+		%>
+			<a href="<%=path %>/RepsdController?sw=S&start=<%=start + pageSize%>&nowPage=<%=nowPage+1 %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">다음</a>
+		<%
+		} else {
+		%>
+			다음	
+		<%
+		}
+		%>
+		<% 
+		nowPage = totalPage;
+		start = (nowPage - 1) * pageSize;
+		%>
+		<a href="<%=path %>/RepsdController?sw=S&start=<%=start %>&nowPage=<%=nowPage %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">마지막</a>
 	</div>
 	<br>
 </section>

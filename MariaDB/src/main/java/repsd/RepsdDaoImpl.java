@@ -47,7 +47,7 @@ public class RepsdDaoImpl implements RepsdDao {
 		conn = DBConn.getConnection();
 		try {
 			String sql;
-			if (vo.getCh1() == null || vo.getCh2().equals("")) {
+			if (vo.getCh1() == null || vo.getCh2().equals("") || vo.getCh2().equals("null")) {
 				sql = "select * from repsd order by ref desc, re_step limit ?, ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, vo.getStart());
@@ -240,7 +240,7 @@ public class RepsdDaoImpl implements RepsdDao {
 		conn = DBConn.getConnection();
 		String sql;
 		try {
-			if(vo.getCh1() == null || vo.getCh2().equals("")) {
+			if(vo.getCh1() == null || vo.getCh2().equals("") || vo.getCh2().equals("null")) {
 				sql = "select count(*) as tc from repsd";
 				pstmt = conn.prepareStatement(sql);
 			} else {
