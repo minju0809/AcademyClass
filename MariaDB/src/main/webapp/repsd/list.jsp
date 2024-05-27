@@ -12,9 +12,14 @@ int pageSize = (int)request.getAttribute("pageSize");
 int nowPage = (int)request.getAttribute("nowPage");
 int totalPage = (int)request.getAttribute("totalPage");
 
+int lastPage = (int)request.getAttribute("lastPage");
+int pageListSize = (int)request.getAttribute("pageListSize");
+int listStartPage = (int)request.getAttribute("listStartPage");
+int listEndPage = (int)request.getAttribute("listEndPage");
+
 String ch1 = (String)request.getAttribute("ch1");
 String ch2 = (String)request.getAttribute("ch2");
-System.out.println("ch1: " + ch1 + "ch2: " + ch2);
+System.out.println("ch1: " + ch1 + ", ch2: " + ch2);
 %>
 <style>
 	.img {
@@ -25,12 +30,16 @@ System.out.println("ch1: " + ch1 + "ch2: " + ch2);
   }
 </style>
 <section>
-	<br>
 	<div align=center>
-		<h2>목록보기</h2>
-		tc: <%=tc %>
-		now: <%=nowPage %>
-		totalPage: <%=totalPage %>
+		목록보기 <br>
+    <div>
+	    1. 페이지 사이즈 : <%=pageSize %> || 2. 페이지 List사이즈 : <%=pageListSize %> ||
+	    3. 전체 레코드 수 : <%=tc %> || 4. 총 페이지 수 : <%=totalPage %>
+    </div>
+    <div>
+    	5. 현재 레코드 : <%=start + 1%> || 6. 현재 페이지 : <%=nowPage %> ||
+    	7. 가로 하단 시작 : <%=listStartPage %> || 8. 가로 하단 마지막 : <%=listEndPage %>
+    	</div>
 		<table border=1>
 			<tr>
 				<td>번호</td>
@@ -108,34 +117,46 @@ System.out.println("ch1: " + ch1 + "ch2: " + ch2);
 			ch2 = java.net.URLEncoder.encode(ch2, "UTF-8");
 		}
 		%>
-		<a href="<%=path %>/RepsdController?sw=S&start=0&nowPage=1&ch1=<%=ch1 %>&ch2=<%=ch2 %>">처음</a>
+		<a href="<%=path %>/RepsdController?sw=S&start=0&ch1=<%=ch1 %>&ch2=<%=ch2 %>">처음</a>
 		<%
-		if(start == 0) { 
+		start = (pageSize * pageListSize) * ((listStartPage - pageListSize -1) / pageListSize); 
+		if(nowPage > pageListSize) {
 		%>
-			이전	
+			<a href="<%=path %>/RepsdController?sw=S&start=<%=start %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">이전<%=pageListSize %>페이지</a>
 		<%
 		} else {
 		%>
-			<a href="<%=path %>/RepsdController?sw=S&start=<%=start - pageSize%>&nowPage=<%=nowPage-1 %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">이전</a>
+			이전<%=pageListSize %>페이지
 		<%
 		}
 		%>
 		<%
+		for(int i = listStartPage; i <= listEndPage; i++) {
+			start = (i-1) * pageSize;
+			if(i <= totalPage) {
+			%>
+				<a href="<%=path %>/RepsdController?sw=S&start=<%=start%>&ch1=<%=ch1 %>&ch2=<%=ch2 %>"><%=i %></a>	
+			<%
+			}
+		}
+		%>
+		<%
+		start = (pageSize * pageListSize) * (listEndPage / pageListSize);
 		if(nowPage != totalPage) { 
 		%>
-			<a href="<%=path %>/RepsdController?sw=S&start=<%=start + pageSize%>&nowPage=<%=nowPage+1 %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">다음</a>
+			<a href="<%=path %>/RepsdController?sw=S&start=<%=start %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">다음<%=pageListSize %>페이지</a>
+			&nbsp;
 		<%
 		} else {
 		%>
-			다음	
+			다음<%=pageListSize %>페이지	
 		<%
 		}
 		%>
 		<% 
-		nowPage = totalPage;
-		start = (nowPage - 1) * pageSize;
+		start = (totalPage - 1) * pageSize; // 마지막 페이지
 		%>
-		<a href="<%=path %>/RepsdController?sw=S&start=<%=start %>&nowPage=<%=nowPage %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">마지막</a>
+		<a href="<%=path %>/RepsdController?sw=S&start=<%=start %>&ch1=<%=ch1 %>&ch2=<%=ch2 %>">마지막</a>
 	</div>
 	<br>
 </section>

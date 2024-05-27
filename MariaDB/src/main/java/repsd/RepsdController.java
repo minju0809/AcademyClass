@@ -154,7 +154,6 @@ public class RepsdController extends HttpServlet {
 			
 			response.sendRedirect(path + "/RepsdController?sw=S");
 		} 
-
 	}
 	
 	private void multipartNot(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -166,42 +165,46 @@ public class RepsdController extends HttpServlet {
 		
 		if(sw.equals("S")) {
 			String sidx = request.getParameter("start");
-			String nowPageStr = request.getParameter("nowPage");
+//			String nowPageStr = request.getParameter("nowPage");
 			String ch1 = request.getParameter("ch1");
 			String ch2 = request.getParameter("ch2");
-//			if(ch1 == null) {
-//				ch1= "";
-//			}
-//			if(ch2 == null) {
-//				ch2= "";
-//			}
+
 		    vo.setCh1(ch1);
 		    vo.setCh2(ch2);
 			
 			int start;
 		    int pageSize = 10;
-		    int nowPage;
+		    int pageListSize = 10;
 		    
 			vo.setPageSize(pageSize);
 			
 		    if (sidx == null) {
 		    	start = 0;
-		    	nowPage = 1;
+//		    	nowPage = 1;
 		    } else {
 		        start = Integer.parseInt(sidx);
-		        nowPage = Integer.parseInt(nowPageStr);
+//		        nowPage = Integer.parseInt(nowPageStr);
 		    }
+		    
+		    int nowPage = start / pageSize + 1;
+		    int totalCount = service.totalCount(vo);
+		    int totalPage = (int) Math.ceil((double)totalCount/ pageSize);
+		    int lastPage = (totalPage - 1) * pageSize + 1;
+		    int listStartPage = (nowPage - 1) / pageListSize * pageListSize + 1;
+		    int listEndPage = listStartPage + pageListSize - 1;
 		    
 		    vo.setStart(start);
 		    vo.setPageSize(pageSize);
 			
-		    int totalCount = service.totalCount(vo);
-		    int totalPage = (int) Math.ceil((double)totalCount/ pageSize);
-		    
 			request.setAttribute("start", start);
 			request.setAttribute("pageSize", pageSize);
 			request.setAttribute("nowPage", nowPage);
 			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("lastPage", lastPage);
+			
+			request.setAttribute("pageListSize", pageListSize);
+			request.setAttribute("listStartPage", listStartPage);
+			request.setAttribute("listEndPage", listEndPage);
 			
 			request.setAttribute("tc", totalCount);
 			request.setAttribute("li", service.getSelect(vo));
