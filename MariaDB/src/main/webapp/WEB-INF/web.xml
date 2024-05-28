@@ -59,4 +59,14 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingController</display-name>
+    <servlet-name>ShoppingController</servlet-name>
+    <servlet-class>shopping.ShoppingController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingController</servlet-name>
+    <url-pattern>/ShoppingController</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -50,18 +50,19 @@
 <body>
 <header> (스마트웹&콘테츠개발) JAVA기반 웹 개발자 양성과정 </header>
 <nav> &emsp;
-	<a href="<%=path %>/PsdController?sw=F">자료실저장</a>
-	<a href="<%=path %>/PsdController?sw=S">자료실목록</a>
-	
-	<a href="<%=path %>/ReBoardController?sw=F">성적등록</a>
-	<a href="<%=path %>/ReBoardController?sw=S">학생목록</a>
-	
-	<a href="<%=path %>/ReplyBoardController?sw=F">등록</a>
-	<a href="<%=path %>/ReplyBoardController?sw=S">목록</a>
-	
 	<%
 	if(id != null) {
 	%>
+		<a href="<%=path %>/PsdController?sw=F">자료실저장</a>
+		<a href="<%=path %>/PsdController?sw=S">자료실목록</a>
+		
+		<a href="<%=path %>/ReBoardController?sw=F">성적등록</a>
+		<a href="<%=path %>/ReBoardController?sw=S">학생목록</a>
+		
+		<a href="<%=path %>/ReplyBoardController?sw=F">등록</a>
+		<a href="<%=path %>/ReplyBoardController?sw=S">목록</a>
+	
+		<%-- <a href="<%=path %>/RepsdController?sw=II">자료추가</a> --%>
 		<a href="<%=path %>/RepsdController?sw=F">자료등록</a>
 		<a href="<%=path %>/RepsdController?sw=S">자료목록</a>
 		<a href="<%=path %>/LoginController?sw=logout"><%=id %>(로그아웃)</a>
@@ -72,9 +73,10 @@
 	<%
 	}
 	%>
-	<%-- <a href="<%=path %>/RepsdController?sw=II">자료추가</a> --%>
 	
-	
+	<a href="<%=path %>/ShoppingController?sw=F">회원등록</a>
+	<a href="<%=path %>/ShoppingController?sw=L">회원목록</a>
+	<a href="<%=path %>/ShoppingController?sw=M">매출</a>
 	
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>
