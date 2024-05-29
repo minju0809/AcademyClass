@@ -69,4 +69,14 @@
     <servlet-name>ShoppingController</servlet-name>
     <url-pattern>/ShoppingController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MapController</display-name>
+    <servlet-name>MapController</servlet-name>
+    <servlet-class>kakao.MapController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MapController</servlet-name>
+    <url-pattern>/MapController</url-pattern>
+  </servlet-mapping>
 </web-app>

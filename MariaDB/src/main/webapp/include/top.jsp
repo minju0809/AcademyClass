@@ -78,5 +78,8 @@
 	<a href="<%=path %>/ShoppingController?sw=L">회원목록</a>
 	<a href="<%=path %>/ShoppingController?sw=M">매출</a>
 	
+	<a href="<%=path %>/MapController?sw=map1">지도1</a>
+	<a href="<%=path %>/MapController?sw=map2">지도2</a>
+	
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>

@@ -33,6 +33,8 @@ public class ShoppingDaoImpl implements ShoppingDao {
 				m.setJoindate(rs.getString("joindate"));
 				m.setGrade(rs.getString("grade"));
 				m.setCity(rs.getString("city"));
+				m.setLatitude(rs.getString("latitude"));
+				m.setLongitude(rs.getString("longitude"));
 				li.add(m);
 			}
 		} catch (SQLException e) {
@@ -58,6 +60,8 @@ public class ShoppingDaoImpl implements ShoppingDao {
 				m.setJoindate(rs.getString("joindate"));
 				m.setGrade(rs.getString("grade"));
 				m.setCity(rs.getString("city"));
+				m.setLatitude(rs.getString("latitude"));
+				m.setLongitude(rs.getString("longitude"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

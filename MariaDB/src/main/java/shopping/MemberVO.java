@@ -16,4 +16,7 @@ public class MemberVO {
 	private String joindate;
 	private String grade;
 	private String city;
+	
+	private String latitude;
+	private String longitude;
 }

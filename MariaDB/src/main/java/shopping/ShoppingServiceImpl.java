@@ -5,7 +5,7 @@ import java.util.List;
 public class ShoppingServiceImpl implements ShoppingService {
 	ShoppingDao dao;
 	
-	ShoppingServiceImpl() {
+	public ShoppingServiceImpl() {
 		dao = new ShoppingDaoImpl();
 	}
 
