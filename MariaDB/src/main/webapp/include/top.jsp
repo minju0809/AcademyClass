@@ -81,5 +81,11 @@
 	<a href="<%=path %>/MapController?sw=map1">지도1</a>
 	<a href="<%=path %>/MapController?sw=map2">지도2</a>
 	
+	<a href="<%=path %>/DatasetXMLController?sw=S">XML(S)</a>
+	<a href="<%=path %>/DatasetXMLController?sw=SI">XML(SI)</a>
+	<a href="<%=path %>/DatasetXMLController?sw=I">XML(I)</a>
+	<a href="<%=path %>/StockController?sw=S">주식</a>
+	<a href="<%=path %>/DatasetJSONController?sw=S">JSON(S)</a>
+	
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>

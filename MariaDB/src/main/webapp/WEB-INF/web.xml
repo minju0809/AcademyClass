@@ -79,4 +79,34 @@
     <servlet-name>MapController</servlet-name>
     <url-pattern>/MapController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DatasetXMLController</display-name>
+    <servlet-name>DatasetXMLController</servlet-name>
+    <servlet-class>dataset.DatasetXMLController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DatasetXMLController</servlet-name>
+    <url-pattern>/DatasetXMLController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DatasetJSONController</display-name>
+    <servlet-name>DatasetJSONController</servlet-name>
+    <servlet-class>dataset.DatasetJSONController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DatasetJSONController</servlet-name>
+    <url-pattern>/DatasetJSONController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StockController</display-name>
+    <servlet-name>StockController</servlet-name>
+    <servlet-class>dataset.StockController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StockController</servlet-name>
+    <url-pattern>/StockController</url-pattern>
+  </servlet-mapping>
 </web-app>
