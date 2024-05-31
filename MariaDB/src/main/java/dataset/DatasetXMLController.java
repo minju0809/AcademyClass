@@ -48,7 +48,7 @@ public class DatasetXMLController extends HttpServlet {
 		String path = request.getContextPath();
 		String sw = request.getParameter("sw");
 		
-		DatasetService service = new DatasetServiceImpl();
+		Service service = new ServiceImpl();
 		
 		if(sw.equals("I")) {
 			System.out.println("===> I");

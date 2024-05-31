@@ -2,11 +2,13 @@ package dataset;
 
 import java.util.List;
 
-public class DatasetServiceImpl implements DatasetService {
+public class ServiceImpl implements Service {
 	DatasetDao dao;
+	StockDao stockDao;
 	
-	public DatasetServiceImpl() {
+	public ServiceImpl() {
 		dao = new DatasetDaoImpl();
+		stockDao = new StockDaoImpl();
 	}
 	
 	@Override
@@ -28,5 +30,21 @@ public class DatasetServiceImpl implements DatasetService {
 	public DatasetVO selectOne(int idx) {
 		return dao.selectOne(idx);
 	}
+	
+
+	@Override
+	public void stockDeleteAll() {
+		stockDao.stockDeleteAll();
+	}
+	@Override
+	public void stockInsert(StockVO vo) {
+		stockDao.stockInsert(vo);
+	}
+
+	@Override
+	public List<StockVO> stockSelectAll() {
+		return stockDao.stockSelectAll();
+	}
+
 
 }

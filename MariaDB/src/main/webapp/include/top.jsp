@@ -84,8 +84,10 @@
 	<a href="<%=path %>/DatasetXMLController?sw=S">XML(S)</a>
 	<a href="<%=path %>/DatasetXMLController?sw=SI">XML(SI)</a>
 	<a href="<%=path %>/DatasetXMLController?sw=I">XML(I)</a>
-	<a href="<%=path %>/StockController?sw=S">주식</a>
-	<a href="<%=path %>/DatasetJSONController?sw=S">JSON(S)</a>
+	<a href="<%=path %>/StockController?sw=SI">주식(SI)</a>
+	<a href="<%=path %>/StockController?sw=S">주식(S)</a>
+	<a href="<%=path %>/StockController?sw=I">주식(I)</a>
+	<a href="<%=path %>/DatasetJSONController?sw=SI">JSON(SI)</a>
 	
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>
