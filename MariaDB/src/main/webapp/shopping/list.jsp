@@ -3,9 +3,10 @@
 <%@ page import="java.util.*" %>
 <%@ page import="shopping.*" %>
 
-<%@ include file="/include/top.jsp" %>
+<%@taglib  uri="http://java.sun.com/jstl/core"  prefix="c" %>  
+<c:import url="/include/top.jsp" /> 
 <%
-List<MemberVO> li = (List<MemberVO>)request.getAttribute("li");
+List<HashMap<String, Object>> li = (List<HashMap<String, Object>>)request.getAttribute("li");
 %>
 <section>
 	<div align=center>
@@ -33,19 +34,19 @@ List<MemberVO> li = (List<MemberVO>)request.getAttribute("li");
 				<%
 				} else {
 						
-						for(MemberVO m : li) {
+						for(HashMap<String, Object> m : li) {
 				%>
 					<tr>
-						<td><a href=ShoppingController?sw=E&custno=<%=m.getCustno() %>><%=m.getCustno() %></a></td>
-						<td><a href=MapController?sw=map3&custno=<%=m.getCustno() %>>지도3</a></td>
-						<td><%=m.getCustname() %></td>
-						<td><%=m.getPhone() %></td>
-						<td><%=m.getAddress() %></td>
-						<td><%=m.getJoindate() %></td>
-						<td><%=m.getGrade() %></td>
-						<td><%=m.getCity() %></td>
-						<td><%=m.getLatitude() %></td>
-						<td><%=m.getLongitude() %></td>
+						<td><a href=ShoppingController?sw=E&custno=<%=m.get("custno") %>><%=m.get("custno") %></a></td>
+						<td><a href=MapController?sw=map3&custno=<%=m.get("custno") %>>지도3</a></td>
+						<td><%=m.get("custname") %></td>
+						<td><%=m.get("phone") %></td>
+						<td><%=m.get("address") %></td>
+						<td><%=m.get("joindate") %></td>
+						<td><%=m.get("grade") %></td>
+						<td><%=m.get("city") %></td>
+						<td><%=m.get("latitude") %></td>
+						<td><%=m.get("longitude") %></td>
 					</tr>
 				<%
 				}

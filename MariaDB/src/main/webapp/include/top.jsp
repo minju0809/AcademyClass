@@ -65,6 +65,20 @@
 		<%-- <a href="<%=path %>/RepsdController?sw=II">자료추가</a> --%>
 		<a href="<%=path %>/RepsdController?sw=F">자료등록</a>
 		<a href="<%=path %>/RepsdController?sw=S">자료목록</a>
+		
+		<a href="<%=path %>/ShoppingController?sw=M">매출</a>
+		
+		<a href="<%=path %>/MapController?sw=map1">지도1</a>
+		<a href="<%=path %>/MapController?sw=map2">지도2</a>
+		
+		<a href="<%=path %>/DatasetXMLController?sw=S">XML(S)</a>
+		<a href="<%=path %>/DatasetXMLController?sw=SI">XML(SI)</a>
+		<a href="<%=path %>/DatasetXMLController?sw=I">XML(I)</a>
+		<a href="<%=path %>/StockController?sw=SI">주식(SI)</a>
+		<a href="<%=path %>/StockController?sw=S">주식(S)</a>
+		<a href="<%=path %>/StockController?sw=I">주식(I)</a>
+		<a href="<%=path %>/DatasetJSONController?sw=SI">JSON(SI)</a>
+		
 		<a href="<%=path %>/LoginController?sw=logout"><%=id %>(로그아웃)</a>
 	<%
 	} else {
@@ -73,21 +87,8 @@
 	<%
 	}
 	%>
-	
 	<a href="<%=path %>/ShoppingController?sw=F">회원등록</a>
 	<a href="<%=path %>/ShoppingController?sw=L">회원목록</a>
-	<a href="<%=path %>/ShoppingController?sw=M">매출</a>
-	
-	<a href="<%=path %>/MapController?sw=map1">지도1</a>
-	<a href="<%=path %>/MapController?sw=map2">지도2</a>
-	
-	<a href="<%=path %>/DatasetXMLController?sw=S">XML(S)</a>
-	<a href="<%=path %>/DatasetXMLController?sw=SI">XML(SI)</a>
-	<a href="<%=path %>/DatasetXMLController?sw=I">XML(I)</a>
-	<a href="<%=path %>/StockController?sw=SI">주식(SI)</a>
-	<a href="<%=path %>/StockController?sw=S">주식(S)</a>
-	<a href="<%=path %>/StockController?sw=I">주식(I)</a>
-	<a href="<%=path %>/DatasetJSONController?sw=SI">JSON(SI)</a>
 	
 	<a href="<%=path %>/index.jsp">홈으로</a>
  </nav>

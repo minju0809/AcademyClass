@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * Servlet implementation class LoginController
@@ -53,6 +54,11 @@ public class LoginController extends HttpServlet {
 			String m = service.login(vo);
 			if(!m.equals("")) {
 				System.out.println("로그인 성공." + m);
+				
+				LoginHashMap map = new LoginHashMapImpl();
+				Map<String, String> str = map.login();
+				String pwd = str.get("ppk");
+				System.out.println("pwd: " + pwd);
 				
 				session.setAttribute("id", m);
 			} else {

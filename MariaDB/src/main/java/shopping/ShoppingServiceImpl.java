@@ -1,5 +1,6 @@
 package shopping;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ShoppingServiceImpl implements ShoppingService {
@@ -10,7 +11,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 	}
 
 	@Override
-	public List<MemberVO> getSelect(MemberVO vo) {
+	public List<HashMap<String, Object>> getSelect(MemberVO vo) {
 		return dao.getSelect(vo);
 	}
 	

@@ -2,6 +2,7 @@ package shopping;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pkg.DBConnection;
@@ -17,24 +18,24 @@ public class ShoppingDaoImpl implements ShoppingDao {
 		DBConn = DBConnection.getInstance();
 	}
 
-	public List<MemberVO> getSelect(MemberVO vo) {
-		List<MemberVO> li = new ArrayList<>();
+	public List<HashMap<String, Object>> getSelect(MemberVO vo) {
+		List<HashMap<String, Object>> li = new ArrayList<>();
 		conn = DBConn.getConnection();
 		try {
 			String sql = "select * from member_tbl_02 order by custno";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				MemberVO m = new MemberVO();
-				m.setCustno(rs.getInt("custno"));
-				m.setCustname(rs.getString("custname"));
-				m.setPhone(rs.getString("phone"));
-				m.setAddress(rs.getString("address"));
-				m.setJoindate(rs.getString("joindate"));
-				m.setGrade(rs.getString("grade"));
-				m.setCity(rs.getString("city"));
-				m.setLatitude(rs.getString("latitude"));
-				m.setLongitude(rs.getString("longitude"));
+				HashMap<String, Object> m = new HashMap<>();
+				m.put("custno", rs.getInt("custno"));
+				m.put("custname", rs.getString("custname"));
+				m.put("phone", rs.getString("phone"));
+				m.put("address", rs.getString("address"));
+				m.put("joindate", rs.getString("joindate"));
+				m.put("grade", rs.getString("grade"));
+				m.put("city", rs.getString("city"));
+				m.put("latitude", rs.getString("latitude"));
+				m.put("longitude", rs.getString("longitude"));
 				li.add(m);
 			}
 		} catch (SQLException e) {
