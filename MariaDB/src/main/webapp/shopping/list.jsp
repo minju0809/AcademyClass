@@ -3,8 +3,10 @@
 <%@ page import="java.util.*" %>
 <%@ page import="shopping.*" %>
 
-<%@taglib  uri="http://java.sun.com/jstl/core"  prefix="c" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <c:import url="/include/top.jsp" /> 
+
 <%
 List<HashMap<String, Object>> li = (List<HashMap<String, Object>>)request.getAttribute("li");
 %>
@@ -25,33 +27,27 @@ List<HashMap<String, Object>> li = (List<HashMap<String, Object>>)request.getAtt
 				<td>위도</td>
 				<td>경도</td>
 			</tr>
-			<%
-			if(li == null) {
-			%>
+			<c:if test="${li==null}">
 				<tr>
 					<td colspan=5>레코드가 존재 하지 않습니다.</td>
 				</tr>
-				<%
-				} else {
-						
-						for(HashMap<String, Object> m : li) {
-				%>
+			</c:if>
+			<c:if test="${li!=null}">
+				<c:forEach  var="m" items="${li}">
 					<tr>
-						<td><a href=ShoppingController?sw=E&custno=<%=m.get("custno") %>><%=m.get("custno") %></a></td>
-						<td><a href=MapController?sw=map3&custno=<%=m.get("custno") %>>지도3</a></td>
-						<td><%=m.get("custname") %></td>
-						<td><%=m.get("phone") %></td>
-						<td><%=m.get("address") %></td>
-						<td><%=m.get("joindate") %></td>
-						<td><%=m.get("grade") %></td>
-						<td><%=m.get("city") %></td>
-						<td><%=m.get("latitude") %></td>
-						<td><%=m.get("longitude") %></td>
+						<td><a href=ShoppingController?sw=E&custno=${m.custno}>${m.custno}</a></td>
+						<td><a href=MapController?sw=map3&custno=${m.custno} %>>지도3</a></td>
+						<td>${m.custname}</td>
+						<td>${m.phone}</td> 
+						<td>${m.address}</td> 
+						<td>${m.joindate}</td> 
+						<td>${m.grade}</td> 	
+						<td>${m.city}</td>
+						<td>${m.latitude}</td>
+						<td>${m.longitude}</td>
 					</tr>
-				<%
-				}
-			}
-			%>
+				</c:forEach>
+			</c:if>				
 		</table>
 	</div>
 	<br>

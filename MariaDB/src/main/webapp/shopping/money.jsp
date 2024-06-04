@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@ page import="java.util.*" %>
 <%@ page import="shopping.*" %>
-
-<%@ include file="/include/top.jsp" %>
+<jsp:include page="/include/top.jsp"  />
 <%
 List<MoneyVO> li = (List<MoneyVO>)request.getAttribute("li");
 %>
@@ -25,34 +28,46 @@ List<MoneyVO> li = (List<MoneyVO>)request.getAttribute("li");
 				<td>고객등급</td>
 				<td>매출</td>
 			</tr>
-			<%
-			if(li == null) {
-			%>
+			<c:if test="${li == null}">
 				<tr>
 					<td colspan=5>레코드가 존재 하지 않습니다.</td>
 				</tr>
-				<%
-				} else {
-						for(MoneyVO m : li) {
-							String grade = m.getGrade();
-							if(grade.equals("A")) {
-								grade = "VIP";
-							} else if(grade.equals("B")) {
-								grade = "일반";
-							} else if(grade.equals("C")) {
-								grade = "직원";
-							}
-				%>
-					<tr>
-						<td><%=m.getCustno() %></td>
-						<td><%=m.getCustname() %></td>
-						<td><%=grade %></td>
-						<td><%=m.getPrice() %></td>
+			</c:if>
+			<c:if test="${li != null}">
+				<c:forEach var="m"  items="${li}"   varStatus="status">
+				    <c:if test="${status.index % 2 == 0 }">
+				       <c:set var="bg" value="#121212" />
+				    </c:if>
+				    <c:if test="${status.index % 2 == 1 }">
+				       <c:set var="bg" value="#ff22aa" />
+				    </c:if>
+					<tr  align="center" bgcolor="${bg}"> 
+					<td class=td1>${m.getCustno()}  </td>  
+					<td>
+					${fn:substring(m.custname,0,1)}
+					*
+					${fn:substring(m.custname,2,fn:length(m.custname))}
+					
+					</td> 
+					<td>
+					  <c:choose>
+					    <c:when test = "${m.getGrade() eq 'A'}">
+					        VIP
+					    </c:when>
+					    <c:when test = "${m.getGrade() == 'B'}">
+					        일반
+					    </c:when>
+					    <c:otherwise>
+					        직원
+					    </c:otherwise>
+				      </c:choose>		 
+					 </td> 
+					<td> 
+						<fmt:formatNumber  value="${m.getPrice()}" />		     
+					</td> 	
 					</tr>
-				<%
-				}
-			}
-			%>
+				</c:forEach>
+			</c:if>	
 		</table>
 		<br>
 		<div class=graph>
@@ -145,4 +160,4 @@ List<MoneyVO> li = (List<MoneyVO>)request.getAttribute("li");
 }
 </script>
 
-<%@ include file="/include/bottom.jsp" %>
+<jsp:include page="/include/bottom.jsp"  />

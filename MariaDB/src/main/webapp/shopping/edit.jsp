@@ -3,7 +3,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="shopping.*" %>
 
-<%@ include file="/include/top.jsp" %>
+<jsp:include page="/include/top.jsp"  />
+
 <%
 MemberVO m = (MemberVO)request.getAttribute("m");
 %>
@@ -13,7 +14,7 @@ MemberVO m = (MemberVO)request.getAttribute("m");
 	<div align=center>
 		<h2>홈쇼핑 회원 정보 수정</h2>
 		
-		<form action="<%=path %>/ShoppingController">
+		<form name=f1  action="${path}/ShoppingController">
 			<input type=hidden name=sw value=U>
 			<table border="1">
 				<tr> 
@@ -23,15 +24,15 @@ MemberVO m = (MemberVO)request.getAttribute("m");
 				</tr>
 				<tr> 
 			  	<td>회원번호</td> 
-			  	<td><input type=text id=custno name=custno value="<%=m.getCustno() %>" /></td>
+			  	<td><input type=text id=custno name=custno value="${m.custno}" /></td>
 				</tr>
 	     	<tr>
 			    <td>회원이름</td> 
-			    <td><input type=text name=custname value="<%=m.getCustname() %>" /></td>
+			    <td><input type=text name=custname value="${m.custname}" /></td>
 				</tr>
 				<tr> 
 					<td>번호</td>
-		  		<td><input type=text name=phone value="<%=m.getPhone() %>"  /></td>
+		  		<td><input type=text name=phone value="${m.getPhone()}"  /></td>
 	  		</tr>
 	  		<tr> 
 	  			<td>주소</td>
