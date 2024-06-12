@@ -31,6 +31,9 @@
 	%> 
 		<a href="<%=path %>/MajustoryController?sw=F">회원가입</a>
 		<a href="<%=path %>/MajustoryController?sw=S">맴버목록</a>
+		
+		<a href="<%=path %>/MajustoryController?sw=pay">카카오결제</a>
+		
 		<a href="<%=path %>/LoginController?sw=F">로그인</a>
 	<%
 	}

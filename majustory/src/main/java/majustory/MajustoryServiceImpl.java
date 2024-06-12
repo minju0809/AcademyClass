@@ -4,29 +4,29 @@ import java.util.List;
 
 public class MajustoryServiceImpl implements MajustoryService {
 
-	MajustoryDao dao;
+	MemberDao dao;
 	
 	MajustoryServiceImpl() {
-		dao = new MajustoryDaoImpl();
+		dao = new MemberDaoImpl();
 	}
 	
 	@Override
-	public void insert(MajustoryVO vo) {
+	public void insert(MemberVO vo) {
 		dao.insert(vo);
 	}
 	
 	@Override
-	public void update(MajustoryVO vo) {
+	public void update(MemberVO vo) {
 		dao.update(vo);
 	}
 
 	@Override
-	public List<MajustoryVO> getSelect() {
+	public List<MemberVO> getSelect() {
 		return dao.getSelect();
 	}
 
 	@Override
-	public MajustoryVO getSelectOne(MajustoryVO vo) {
+	public MemberVO getSelectOne(MemberVO vo) {
 		return dao.getSelectOne(vo);
 	}
 

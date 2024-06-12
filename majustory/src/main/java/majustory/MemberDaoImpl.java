@@ -6,19 +6,19 @@ import java.util.List;
 
 import pkg.DBConnection;
 
-public class MajustoryDaoImpl implements MajustoryDao {
+public class MemberDaoImpl implements MemberDao {
 
 	DBConnection DBConn;
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	MajustoryDaoImpl() {
+	MemberDaoImpl() {
 		DBConn = DBConnection.getInstance();
 	}
 	
 	@Override
-	public void insert(MajustoryVO vo) {
+	public void insert(MemberVO vo) {
 		conn = DBConn.getConnection();
 		String sql = "insert into member (mid, mpassword1, mpassword2, mphone,"
 				+ " maddr1, maddr2, maddr3, mname, mage, mgender, mgrade)"
@@ -43,7 +43,7 @@ public class MajustoryDaoImpl implements MajustoryDao {
 	}
 
 	@Override
-	public void update(MajustoryVO vo) {
+	public void update(MemberVO vo) {
 		conn = DBConn.getConnection();
 		String sql = "update member set mphone=?, maddr1=?, maddr2=?, maddr3=?, "
 				+ " mgrade=?, metc=? where mid=? ";
@@ -63,15 +63,15 @@ public class MajustoryDaoImpl implements MajustoryDao {
 	}
 
 	@Override
-	public List<MajustoryVO> getSelect() {
-		List<MajustoryVO> li = new ArrayList<>();
+	public List<MemberVO> getSelect() {
+		List<MemberVO> li = new ArrayList<>();
 		conn = DBConn.getConnection();
 		String sql = "select * from member";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				MajustoryVO m = new MajustoryVO();
+				MemberVO m = new MemberVO();
 				m.setMid(rs.getString("mid"));
 				m.setMpassword1(rs.getString("mpassword1"));
 				m.setMpassword2(rs.getString("mpassword2"));
@@ -93,8 +93,8 @@ public class MajustoryDaoImpl implements MajustoryDao {
 
 
 	@Override
-	public MajustoryVO getSelectOne(MajustoryVO vo) {
-		MajustoryVO m = new MajustoryVO();
+	public MemberVO getSelectOne(MemberVO vo) {
+		MemberVO m = new MemberVO();
 		conn = DBConn.getConnection();
 		String sql = "select * from member where mid=?";
 		try {

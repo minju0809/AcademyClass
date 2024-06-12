@@ -3,7 +3,7 @@ package majustory;
 import lombok.Data;
 
 @Data
-public class MajustoryVO {
+public class MemberVO {
 	private String mid;
 	private String mpassword1;
 	private String mpassword2;

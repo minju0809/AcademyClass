@@ -36,7 +36,7 @@ public class MajustoryController extends HttpServlet {
 		
 		if(sw.equals("F")) {
 			
-			response.sendRedirect(path + "/member/index.jsp");
+			response.sendRedirect(path + "/member/form.jsp");
 		} else if(sw.equals("I")) {
 			
 			String mid = request.getParameter("mid");
@@ -51,7 +51,7 @@ public class MajustoryController extends HttpServlet {
 			String mgender = request.getParameter("mgender");
 			String mgrade = "일반";
 			
-			MajustoryVO vo = new MajustoryVO();
+			MemberVO vo = new MemberVO();
 			vo.setMid(mid);
 			vo.setMpassword1(mpassword1);
 			vo.setMpassword2(mpassword2);
@@ -74,7 +74,7 @@ public class MajustoryController extends HttpServlet {
 			rd.forward(request, response);
 		} else if(sw.equals("E")) {
 			String mid = request.getParameter("mid");
-			MajustoryVO vo = new MajustoryVO();
+			MemberVO vo = new MemberVO();
 			vo.setMid(mid);
 			
 			request.setAttribute("m", service.getSelectOne(vo));
@@ -90,7 +90,7 @@ public class MajustoryController extends HttpServlet {
 			String mgrade = request.getParameter("mgrade");
 			String metc = request.getParameter("metc");
 			
-			MajustoryVO vo = new MajustoryVO();
+			MemberVO vo = new MemberVO();
 			vo.setMid(mid);
 			vo.setMphone(mphone);
 			vo.setMaddr1(maddr1);
@@ -104,6 +104,9 @@ public class MajustoryController extends HttpServlet {
 			service.update(vo);
 			
 			response.sendRedirect(path + "/MajustoryController?sw=S");
+		} else if(sw.equals("pay")) {
+			
+			response.sendRedirect(path + "/kakao/form.jsp");
 		}
 	}
 

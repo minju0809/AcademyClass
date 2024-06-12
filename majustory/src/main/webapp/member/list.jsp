@@ -4,24 +4,18 @@
 
 <jsp:include page="/include/top.jsp" />
 
-
 <section>
   <div align="center"> 
   	<br>
     <h2>맴버 목록</h2>
-    <table>
+    <table border=1>
     	<tr>
     		<td>아이디</td>
     		<td>평문암호</td>
     		<td>암호화암호</td>
     		<td>전화번호</td>
-    		<td>우편번호</td>
-    		<td>주소</td>
-    		<td>상세주소</td>
     		<td>이름</td>
     		<td>나이</td>
-    		<td>성별</td>
-    		<td>등급</td>
     	</tr>	
     	<c:if test="${li==null}">
 				<tr>
@@ -35,13 +29,8 @@
 						<td>${m.mpassword1}</td>
 						<td>${m.mpassword2}</td>
 						<td>${m.mphone}</td> 
-						<td>${m.maddr1}</td> 
-						<td>${m.maddr2}</td> 
-						<td>${m.maddr3}</td> 	
 						<td>${m.mname}</td>
 						<td>${m.mage}</td>
-						<td>${m.mgender}</td>
-						<td>${m.mgrade}</td>
 					</tr>
 				</c:forEach>
 			</c:if>		
@@ -49,4 +38,5 @@
     <br>
   </div> 
 </section>
+
 <jsp:include page="/include/bottom.jsp" />
