@@ -78,10 +78,14 @@ public class ApproveServlet extends HttpServlet {
 
         System.out.println("===>ApproveServlet conn 확인: " + conn );
         
+        String partner_order_id = (String) request.getSession().getAttribute("partner_order_id");
+        String partner_user_id = (String) request.getSession().getAttribute("partner_user_id");
+        request.getSession().getAttribute("total_amount");
+        
         String params = "cid=" + CID +
                         "&tid=" + tid +
-                        "&partner_order_id=1001" +
-                        "&partner_user_id=user_123" +
+                        "&partner_order_id=" + partner_order_id +
+                        "&partner_user_id=" + partner_user_id +
                         "&pg_token=" + pgToken;
 
         try (OutputStream os = conn.getOutputStream()) {
@@ -107,10 +111,6 @@ public class ApproveServlet extends HttpServlet {
         System.out.println("===>ApproveServlet result 확인: " + result );
         
         request.getSession().setAttribute("result", result);
-        
-        request.getSession().getAttribute("partner_order_id");
-        request.getSession().getAttribute("partner_user_id");
-        request.getSession().getAttribute("total_amount");
         
         System.out.println("partner_order_id:" + request.getSession().getAttribute("partner_order_id"));
         System.out.println("partner_user_id:" + request.getSession().getAttribute("partner_user_id"));

@@ -11,15 +11,15 @@
   <br>
 	  <div  align="center"> <h2> 배열로 받아 오기  </h2> </div> 
 	  <div align="center"> 
-	   <form name=f1 action="${path}/PaymentServlet" onsubmit="return kakaoCk()">
+	   <form name=f1 action="${path}/PaymentServlet" method=post onsubmit="return kakaoCk()">
 		   <table border=1>
 			   <tr align="center">  
 			     <td> 주문번호 </td>
-			     <td><input type=text name=partner_order_id value=1001 ></td> <!-- 다르면 706 -->
+			     <td><input type=text name=partner_order_id ></td>
 			   </tr>
 			   <tr align="center">  
 			     <td> 이름 </td>
-			     <td><input type=text name=partner_user_id value=user_123 ></td> <!-- 다르면 707 -->
+			     <td><input type=text name=partner_user_id ></td>
 			   </tr>
 			   <tr align="center">  
 			     <td> 품명 </td>
