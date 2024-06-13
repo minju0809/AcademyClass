@@ -1,4 +1,4 @@
-package pkg;
+package majustory;
 
 import java.sql.*;
 

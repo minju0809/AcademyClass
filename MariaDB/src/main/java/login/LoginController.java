@@ -61,6 +61,8 @@ public class LoginController extends HttpServlet {
 				System.out.println("pwd: " + pwd);
 				
 				session.setAttribute("id", m);
+				
+				// response.sendRedirect(path + "/login/success.jsp");
 			} else {
 				System.out.println("로그인 실패" + m);
 			}

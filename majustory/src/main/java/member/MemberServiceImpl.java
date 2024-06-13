@@ -1,12 +1,12 @@
-package majustory;
+package member;
 
 import java.util.List;
 
-public class MajustoryServiceImpl implements MajustoryService {
+public class MemberServiceImpl implements MemberService {
 
 	MemberDao dao;
 	
-	MajustoryServiceImpl() {
+	MemberServiceImpl() {
 		dao = new MemberDaoImpl();
 	}
 	
@@ -28,6 +28,11 @@ public class MajustoryServiceImpl implements MajustoryService {
 	@Override
 	public MemberVO getSelectOne(MemberVO vo) {
 		return dao.getSelectOne(vo);
+	}
+
+	@Override
+	public String login(MemberVO vo) {
+		return dao.login(vo);
 	}
 
 }

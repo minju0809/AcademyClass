@@ -1,4 +1,4 @@
-package majustory;
+package member;
 
 import lombok.Data;
 

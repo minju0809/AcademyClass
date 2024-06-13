@@ -39,4 +39,24 @@
     <servlet-name>ApproveServlet</servlet-name>
     <url-pattern>/ApproveServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductController</display-name>
+    <servlet-name>ProductController</servlet-name>
+    <servlet-class>product.ProductController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductController</servlet-name>
+    <url-pattern>/ProductController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberController</display-name>
+    <servlet-name>MemberController</servlet-name>
+    <servlet-class>member.MemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberController</servlet-name>
+    <url-pattern>/MemberController</url-pattern>
+  </servlet-mapping>
 </web-app>

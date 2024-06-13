@@ -1,10 +1,10 @@
-package majustory;
+package member;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import pkg.DBConnection;
+import majustory.DBConnection;
 
 public class MemberDaoImpl implements MemberDao {
 
@@ -114,6 +114,27 @@ public class MemberDaoImpl implements MemberDao {
 				m.setMgender(rs.getString("mgender"));
 				m.setMgrade(rs.getString("mgrade"));
 				m.setMetc(rs.getString("metc"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return m;
+	}
+
+	@Override
+	public String login(MemberVO vo) {
+		String m = "";
+		conn = DBConn.getConnection();
+		try {
+			String sql = "select * from member where mid = ? and mpassword1 = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMid());
+			pstmt.setString(2, vo.getMpassword1());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				m = rs.getString("mid");
+			} else {
+				m = null;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
